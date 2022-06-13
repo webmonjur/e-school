@@ -16,8 +16,11 @@ a{
 a:hover{
     text-decoration:none;
 }
-.padding-y{
-    padding:100px 0 !important;
+section{
+    padding:50px 0 !important;
+}
+.header-section{
+    padding:50px 0;
 }
 .button{
     display:inline-block !important;
@@ -34,9 +37,16 @@ a:hover{
 #header-section{
     background-color:#F0FFF0;
 }
-.menubar{
-    display:flex !important;
-    justify-content:space-between !important;
+nav{
+    top:0;
+    left:0;
+    width:100%;
+    padding:40px 0;
+    z-index:1000;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:.3s;
 }
 .logo{
     width:20%;
@@ -44,10 +54,126 @@ a:hover{
 .logo img{
     width:100%;
 }
-.menu{
-    width:80%;
-    
+nav .navbar li{
+    list-style:none;
+    position:relative;
 }
+nav .navbar li a{
+    display:inline-block;
+    padding:15px 10px;
+    color:#000000;
+    position:relative;
+    transition:.4s;
+}
+nav .navbar li a:hover{
+    color:#21B573;
+}
+
+.toggle{
+    width:40px;
+    height:32px;
+    position:relative;
+    right:0px;
+    top:0px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor: pointer;
+    overflow: hidden;
+}
+.toggler{
+    width:40px;
+    height:4px;
+    background:#21B573;
+    border-radius:3px;
+    transition:all .3s ease-in;
+    display:none;
+}
+.toggle.toggled .toggler{
+    transform:translate(0px);
+    background: transparent;
+}
+.toggler::before{
+    position:absolute;
+    content:"";
+    width:40px;
+    height:4px;
+    background:#21B573;
+    border-radius:3px;
+    transform:translateY(-10px);
+    transition:all .3s ease-in;
+}
+.toggle.toggled .toggler::before{
+    position:absolute;
+    content:"";
+    width:40px;
+    height:4px;
+    background:#21B573;
+    transform:translateY(-10px);
+    transition:all .3s ease-in;
+    transform:rotate(45deg)
+}
+.toggler::after{
+    content:"";
+    position:absolute;
+    width:40px;
+    height:4px;
+    background:#21B573;
+    border-radius:3px;
+    transform:translateY(10px);
+    transition:all .3s ease-in;
+}
+.toggle.toggled .toggler::after{
+    position:absolute;
+    content:"";
+    width:40px;
+    height:4px;
+    background:#21B573;
+    transform:translateY(-10px);
+    transition:all .3s ease-in;
+    transform:rotate(-45deg)
+}
+
+/* ---responsive toggler------ */
+@media (max-width:750px){
+    nav .navbar{
+        width:100%;
+        height:100vh;
+        background:#fff;
+        position:fixed;
+        top:80px;
+        left:-100%;
+        display:flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        transition:.4s;
+        padding-left: 45px;
+        z-index:10000;
+    }
+    nav.sticky .navbar{
+        border-top:1px solid #21B573;
+        top:55px;
+        background:#fff;
+    }
+    nav.sticky .navbar li a{
+        color:#000;
+    }
+    nav.sticky .navbar li a:hover{
+        color:#21B573;
+    }
+    .toggler{
+        display:block;
+    }
+    nav .navbar.collups{
+       left:0;
+    }
+}
+
+
+
+
+
 .banner-text h3{
     color:#FD511A;
     font-size:16px;
@@ -65,15 +191,14 @@ a:hover{
     font-size:16px;
 }
 .item-box{
-    display:flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items:center;
     padding:30px;
     background-color:#F8FFFB;
-    width:270px;
-    height:270px;
     border-radius:10px;
+    margin:10px 0;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 .item-box:hover,.item-box:active,.item-box.active{
     background-color: #fff;
@@ -88,5 +213,85 @@ a:hover{
     font-size:18px;
 }
 .item-box p{
+    font-size:14px;
+}
+
+.course-item{
+    padding:20px;
+    box-shadow:0 0 20px #e4e3e3;
+    border-radius:20px;
+}
+.section-heading{
+    text-align:center;
+    margin-bottom:50px;
+}
+.course-box-footer{
+    display:flex;
+    margin-top:20px;
+    justify-content: space-between;
+}
+.start-text .icon-box, .students-seats .icon-box{
+    width:30px;
+}
+.start-text, .students-seats{
+    display:flex;
+}
+.start-text img{
+    width:100%;
+}
+
+.testi-img{
+    width:150px;
+}
+.testi-text p{
+    font-size:20px;
+    line-height:30px;
+}
+
+
+/* ---footer---- */
+footer{
+    background-color:#282531;
+    padding-top:80px;
+    padding-bottom:20px;
+    color:#fff;
+}
+.footer-text{
+    padding-right: 30px;;
+}
+.footer-menu h4{
+    position:relative;
+    margin-bottom:30px;
+}
+.footer-menu h4::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:1px;
+    background-color:#21B573;
+    left:0;
+    bottom:-10px;
+}
+.footer-menu ul{
+    list-style:none;
+}
+.footer-menu ul li{
+    line-height:25px;
+}
+.footer-menu ul li a{
+    color:#fff;
+    font-size:14px;
+    transition:all 0.3s;
+}
+.footer-menu ul li a:hover{
+    color:#21B573;
+}
+.copyright-text{
+    text-align:center;
+    margin:auto;
+    padding-top:50px;
+}
+.copyright-text p{
+    display:block;
     font-size:14px;
 }
